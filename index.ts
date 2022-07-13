@@ -1,23 +1,17 @@
 require("dotenv").config();
 
-import {
-  Client,
-  Collection,
-  CommandInteraction,
-  Intents,
-  Interaction,
-} from "discord.js";
+import { Client, Collection, CommandInteraction, Intents } from "discord.js";
 import { command, execute } from "./commands/ping";
 
+import { BuiltSlashCommand } from "./types";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
-import { SlashCommandBuilder } from "@discordjs/builders";
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const commands = new Collection<
   string,
   {
-    builder: SlashCommandBuilder;
+    builder: BuiltSlashCommand;
     execute: (interaction: CommandInteraction) => Promise<void>;
   }
 >().set(command.name, { builder: command, execute });
