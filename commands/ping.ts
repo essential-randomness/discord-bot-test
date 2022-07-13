@@ -4,7 +4,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 
 const NAME_OPTION = "with_name";
 
-export const command: BuiltSlashCommand = new SlashCommandBuilder()
+export const builder: BuiltSlashCommand = new SlashCommandBuilder()
   .setName("ping")
   .setDescription("Replies with Pong!")
   .addBooleanOption((option) =>
